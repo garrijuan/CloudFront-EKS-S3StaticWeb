@@ -40,6 +40,7 @@ Creancion Manual:
     -(EC2):AmazonEKS_CNI_Policy,AmazonEKSWorkerNodePolicy,AmazonEC2ContainerRegistryReadOnly
 - crear workerNodes
     -compute->add node group
+    
 -binding kubectl con cluster:
 ```sh
 eks --region us-east-1 update-kubeconfig --name nombreCluster

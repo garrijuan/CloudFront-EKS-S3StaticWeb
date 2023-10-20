@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+data:
+  service-account-annotations: "eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/your-nginx-ingress-role"
