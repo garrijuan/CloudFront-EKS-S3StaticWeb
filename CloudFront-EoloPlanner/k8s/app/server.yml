@@ -4,6 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: server
+  namespace: staging
 spec:
   strategy:
     type: Recreate
@@ -45,6 +46,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: server-service
+  namespace: staging
   labels:
     app: server
 spec:
