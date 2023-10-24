@@ -52,4 +52,4 @@ spec:
   - port: 8181
     targetPort: 8181
     name: topo-port
-  type: ClusterIP
+  type: NodePort

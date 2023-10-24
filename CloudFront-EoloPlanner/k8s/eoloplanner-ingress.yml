@@ -1,21 +1,29 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: quote-app #
-    namespace: staging #
-    annotations:
-        alb.ingress.kubernetes.io/scheme: internet-facing
-        alb.ingress.kubernetes.io/target-type: instance
-        alb.ingress.kubernetes.io/tags: Environment=staging,Team=jgl
+  name: eoloplanner-ingress
+  namespace: staging
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/target-type: "ip"
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=60
 spec:
-  ingressClassName: alb
+  ingressClassName: nginx
   rules:
     - http:
         paths:
-          - path: /
-            pathType: Exact
-            backend:
-              service:
-                name: quote-app #
-                port:
-                  number: 80
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: server-service
+              port:
+                number: 8080
+        - path: /toposervice/(.+)
+          pathType: Prefix
+          backend:
+            service:
+              name: toposervice
+              port:
+                number: 8181
