@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-alb-ingress-controller
+  namespace: kube-system
+data:
+  cluster-name: myClusterTesting
+  aws-region: us-east-1
+  aws-vpc-id: vpc-0ef5a541ab2e2df06
+  role-arn: arn:aws:iam::617219128301:role/EKS-test
