@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: hello-v1
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - protocol: TCP
     port: 80
