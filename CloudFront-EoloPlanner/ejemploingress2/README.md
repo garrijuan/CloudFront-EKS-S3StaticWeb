@@ -20,6 +20,8 @@ aws eks update-kubeconfig --region us-east-1 --name my-eks-cluster
 https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
 
+testing
+kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 
 ## Verify ingress controller
 kubectl get service ingress-nginx-controller --namespace=ingress-nginx
