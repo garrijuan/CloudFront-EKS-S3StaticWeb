@@ -25,3 +25,12 @@ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 
 ## Verify ingress controller
 kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+
+
+
+kubectl apply -f k8s/
+
+kubectl get ing
+
+curl a13efc445342d4816b73517d70305b6a-1084696550.us-east-1.elb.amazonaws.com
+curl a13efc445342d4816b73517d70305b6a-1084696550.us-east-1.elb.amazonaws.com/api
