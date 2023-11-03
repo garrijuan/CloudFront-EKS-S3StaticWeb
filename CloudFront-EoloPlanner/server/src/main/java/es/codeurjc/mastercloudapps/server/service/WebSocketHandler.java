@@ -36,9 +36,13 @@ public class WebSocketHandler {
     public void onOpen(Session session) {
         logger.info("Connection established...");
 		long userKey = nextUserKey.getAndIncrement();
+        logger.info("Step1...");
 		usersWs.put(userKey, session);
+        logger.info("Step2...");
 		session.getAsyncRemote().sendObject("{\"user-key\" : \"" + userKey + "\"}", result ->  {
+            logger.info("Step3..");
             if (result.getException() != null) {
+                logger.info("Step4..");
                 logger.error("Unable to send message: " + result.getException());
             }
         });

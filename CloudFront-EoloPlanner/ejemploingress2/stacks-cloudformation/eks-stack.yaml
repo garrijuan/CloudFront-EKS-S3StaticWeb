@@ -1,5 +1,5 @@
 ---
-AWSTemplateFormatVersion: '2010-09-09'
+#AWSTemplateFormatVersion: '2010-09-09'
 Description: 'Amazon EKS Cluster'
 
 Parameters:
@@ -8,13 +8,13 @@ Parameters:
     Default: my-eks-cluster
   NumberOfWorkerNodes:
     Type: Number
-    Default: 1
+    Default: 2
   WorkerNodesInstanceType:
     Type: String
-    Default: t2.micro
+    Default: t3.micro
   KubernetesVersion:
     Type: String
-    Default: 1.22
+    Default: 1.28
     
 Resources:
 
@@ -26,7 +26,7 @@ Resources:
     Properties: 
       RoleName: my.eks.cluster.role
       AssumeRolePolicyDocument:
-        Version: "2012-10-17"
+        #Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
@@ -42,7 +42,7 @@ Resources:
     Properties: 
       RoleName: my.eks.node.role
       AssumeRolePolicyDocument:
-        Version: "2012-10-17"
+        #Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:

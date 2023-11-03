@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/websocket-services: "my-websocket-service"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: server-service
+                port:
+                  number: 8080
+          - path: /toposervice/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: toposervice
+                port:
+                  number: 8181
