@@ -1,6 +1,6 @@
-let socket = new WebSocket("ws://a7feedff89dcd41cc97d04b6dcf6ae71-1468627097.us-east-1.elb.amazonaws.com/eoloplants");
+let socket = new WebSocket("ws://a0dc0080a2c594bf0b076ccf5dfe665b-1317707737.us-east-1.elb.amazonaws.com/eoloplants");
 let userKey;
-
+console.log(`holaaaa....`);
 socket.onmessage = function (event) {
   console.log(`[message] Data received from server: ${event.data}`);
   const data = JSON.parse(event.data);
@@ -10,10 +10,12 @@ socket.onmessage = function (event) {
     return;
   }
   if (data.completed) {
+  console.log(`step1....`);
     document.querySelector('#generate').disabled = false;
     createOrUpdatePlanView(data);
     return;
   } else {
+    console.log(`step2....`);
     createOrUpdatePlanView({ ...data, planning: '...' });
   }
 

@@ -64,10 +64,12 @@ public class WebSocketHandler {
     }
 
 	public void sendUpdate(long id, EoloPlant eoloplant) throws IOException {
+        logger.info("sendUpdate..");
 		usersWs.get(id).getAsyncRemote().sendObject(jsonify(eoloplant));
 	}
 
 	public String jsonify(EoloPlant eoloplant) throws JsonProcessingException {
+        logger.info("jsonify..");
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(eoloplant);
 	}

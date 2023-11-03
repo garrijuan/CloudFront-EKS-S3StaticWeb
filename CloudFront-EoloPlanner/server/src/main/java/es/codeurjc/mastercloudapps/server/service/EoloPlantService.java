@@ -13,6 +13,13 @@ import java.util.function.Consumer;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+
+
+import java.util.logging.Logger;
+
+
+
+
 @ApplicationScoped
 public class EoloPlantService {
 
@@ -25,6 +32,8 @@ public class EoloPlantService {
     @Inject
     private WebSocketHandler wsService;
 
+    private static final Logger logger = Logger.getLogger(EoloPlantService.class.getName());
+
     public Collection<EoloPlant> findAll() {
         return eoloPlants.listAll();
     }
@@ -34,7 +43,7 @@ public class EoloPlantService {
     }
 
     public EoloPlant createEoloplant(EoloPlantInput eoloPlantCreationRequest) {
-
+        logger.info("createEoloplant..");
         EoloPlant eoloPlant = new EoloPlant(eoloPlantCreationRequest.getUserId(), eoloPlantCreationRequest.getCity());
         eoloPlants.persist(eoloPlant);
 
@@ -45,11 +54,10 @@ public class EoloPlantService {
     }
 
     public EoloPlant deleteById(long id) {
+         logger.info("deleteById..");
 
         EoloPlant eoloPlant = eoloPlants.findByIdOptional(id).orElseThrow();
-
         eoloPlants.deleteById(id);
-
         return eoloPlant;
     }
 
