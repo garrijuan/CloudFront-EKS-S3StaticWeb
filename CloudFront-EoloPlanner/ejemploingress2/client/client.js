@@ -1,4 +1,5 @@
-let socket = new WebSocket("ws://a0dc0080a2c594bf0b076ccf5dfe665b-1317707737.us-east-1.elb.amazonaws.com/eoloplants");
+
+let socket = new WebSocket("ws://192.168.49.2/eoloplants");
 let userKey;
 console.log(`holaaaa....`);
 socket.onmessage = function (event) {

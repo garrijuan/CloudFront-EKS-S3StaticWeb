@@ -4,15 +4,25 @@ STACK_VPC="my-eks-vpc"
 STACK_EKS="my-eks-cluster"
 
 # Ejecutar script para crear el stack de la VPC
-./create-vpc-stack.sh
+aws cloudformation create-stack \
+  --region us-east-1 \
+  --stack-name my-eks-vpc \
+  --template-body file:///home/juanangel/Escritorio/TFM/CloudFront-EKS-S3StaticWeb/CloudFront-EoloPlanner/ejemploingress2/stacks-cloudformation/vpc-stack.yaml 
 
 # Esperar hasta que el estado del stack de VPC sea CREATE_COMPLETE
 while true; do
     STACK_STATUS=$(aws cloudformation describe-stacks --stack-name $STACK_VPC --query "Stacks[0].StackStatus" --output text)
     if [ "$STACK_STATUS" = "CREATE_COMPLETE" ]; then
+        
         echo "Starting $STACK_EKS stack"
+        
         # Ejecutar script para crear el stack de EKS una vez que el stack de la VPC esté completo
-        ./create-eks-stack.sh
+        aws cloudformation create-stack \
+            --region us-east-1 \
+            --stack-name my-eks-cluster \
+            --capabilities CAPABILITY_NAMED_IAM \
+            --template-body file:///home/juanangel/Escritorio/TFM/CloudFront-EKS-S3StaticWeb/CloudFront-EoloPlanner/ejemploingress2/stacks-cloudformation/eks-stack.yaml 
+        
         break
     else
         echo "Waiting $STACK_VPC stack. Current status: $STACK_VPC"
