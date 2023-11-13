@@ -29,3 +29,6 @@ curl a13efc445342d4816b73517d70305b6a-1084696550.us-east-1.elb.amazonaws.com
 curl a13efc445342d4816b73517d70305b6a-1084696550.us-east-1.elb.amazonaws.com/api
 
 ### deploy Eoloplanner
+
+curl a1c3c51f715194b4686cdec372cd010b-2118301686.us-east-1.elb.amazonaws.com//toposervice/api/topographicdetails/sevilla
+

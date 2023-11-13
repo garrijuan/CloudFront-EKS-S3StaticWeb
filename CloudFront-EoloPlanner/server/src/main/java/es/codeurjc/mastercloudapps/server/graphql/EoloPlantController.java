@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.ws.rs.Path;
 
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Id;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 
 
 @GraphQLApi
+@Path("/graphql")
 public class EoloPlantController {
 
 	private static final Logger logger = Logger.getLogger(EoloPlantController.class.getName());
